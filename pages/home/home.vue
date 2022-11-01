@@ -1,5 +1,11 @@
 <template>
   <view>
+    <!-- 搜索框 -->
+    <!-- 使用自定义的搜索组件 -->
+    <view class="search-box">
+      <my-search @click="gotoSearch"></my-search>
+    </view>
+
     <!-- 轮播图 -->
     <swiper :indicator-dots="true" :autoplay="true" :interval="3000" :duration="1000">
       <swiper-item v-for="item in swiperList" :key="item.goods_id">
@@ -46,6 +52,7 @@
 </template>
 
 <script>
+  import MySearch from '../../components/my-search.vue'
   export default {
     data() {
       return {
@@ -109,6 +116,15 @@
         this.floorList = res.message
       },
 
+      // 跳转到搜索页
+      gotoSearch() {
+        uni.navigateTo({
+          url: '/subpkg/search/search'
+        })
+      },
+    },
+    components: {
+      'my-search': MySearch
     }
   }
 </script>
@@ -155,5 +171,14 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+  }
+
+  .search-box {
+    // 设置定位效果为“吸顶”
+    position: sticky;
+    // 吸顶的“位置”
+    top: 0;
+    // 提高层级，防止被轮播图覆盖
+    z-index: 999;
   }
 </style>

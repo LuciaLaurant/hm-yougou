@@ -1,6 +1,6 @@
 <template>
   <view>
-    
+    <my-search></my-search>
   </view>
 </template>
 
@@ -8,11 +8,11 @@
   export default {
     data() {
       return {
-        
+
       }
     },
     methods: {
-      
+
     }
   }
 </script>
